@@ -15,11 +15,22 @@ app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
     console.log( event )
+
+    if( event.message.text.indexOf("團購") !== -1 ){
+        event.reply( '妳想要團購嗎？' ).then(function (data) {
+            console.log('Success', data);
+        }).catch(function (error) {
+            console.log('Error', error);
+        });
+    }
+
+    /*
     event.reply(event.message.text).then(function (data) {
         console.log('Success', data);
     }).catch(function (error) {
         console.log('Error', error);
     });
+    */
 });
 
 //Express API --------- App.get('path', callback function);
