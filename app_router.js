@@ -14,6 +14,7 @@ const linebotParser = bot.parser();
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
+    console.log( event )
     event.reply(event.message.text).then(function (data) {
         console.log('Success', data);
     }).catch(function (error) {
