@@ -13,6 +13,8 @@ const linebotParser = bot.parser();
 // Redirect linebot webhook url to linebot parser
 app.post('/linewebhook', linebotParser);
 
+bot.push('aaa' , 'test message');
+
 bot.on('message', function (event) {
     console.log( event )
 
