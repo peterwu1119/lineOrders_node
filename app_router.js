@@ -14,10 +14,12 @@ const linebotParser = bot.parser();
 app.post('/linewebhook', linebotParser);
 
 bot.on('follow' , function(event){
+    console.log( event );
     bot.push( event.source.userId , 'welcome');
 })
 
 bot.on('join' , function(event){
+    console.log( event );
     bot.push( event.source.userId , 'welcome');
 })
 
