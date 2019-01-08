@@ -17,6 +17,10 @@ bot.on('follow' , function(event){
     bot.push( event.source.userId , 'welcome');
 })
 
+bot.on('join' , function(event){
+    bot.push( event.source.userId , 'welcome');
+})
+
 bot.on('message', function (event) {
     console.log( event )
     bot.push( event.source.userId , 'test message');
