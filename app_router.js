@@ -13,10 +13,9 @@ const linebotParser = bot.parser();
 // Redirect linebot webhook url to linebot parser
 app.post('/linewebhook', linebotParser);
 
-bot.push('aaa' , 'test message');
-
 bot.on('message', function (event) {
     console.log( event )
+    bot.push( event.source.userId , 'test message');
 
     if( event.message.text.indexOf("團購") !== -1 ){
         event.reply( '妳想要團購嗎？' ).then(function (data) {
