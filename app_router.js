@@ -59,6 +59,8 @@ bot.on('message', function (event) {
         */
     });
 
+    create_flex_message( event.source.userId );
+
     /*
     event.reply(event.message.text).then(function (data) {
         console.log('Success', data);
@@ -77,3 +79,60 @@ app.get('/', function (request, response) {
 app.post('/ajax', function (request, response) {
     response.send("response by ajax");
 });
+
+function create_flex_message( user_id ){
+    /*
+    request.post(
+        'https://api.line.me/v2/bot/message/push',
+        { json: { key: 'value' } },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body)
+            }
+        }
+    );
+    */
+
+    const options = {
+        url: 'https://api.line.me/v2/bot/message/push',
+        method : 'post',
+        formData : {
+            'to' : user_id, 
+            'messages' : [
+                {
+                  "type": "flex",
+                  "altText": "This is a Flex Message",
+                  "contents": {
+                    "type": "bubble",
+                    "body": {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Hello,"
+                        },
+                        {
+                          "type": "text",
+                          "text": "World!"
+                        }
+                      ]
+                    }
+                  }
+                }
+            ]
+        },
+        headers: {
+            'Content-Type' : 'application/json',
+            'Authorization': 'Bearer {' + process.env.CHANNEL_TOKEN +'}'
+        }
+    };
+
+    function callback(error, response, body) {
+        if (!error && response.statusCode == 200) {
+
+        }
+    }
+
+    request( options, callback );
+}
