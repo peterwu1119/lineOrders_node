@@ -25,7 +25,7 @@ bot.on('join' , function(event){
 
 bot.on('message', function (event) {
     console.log( event )
-    bot.push( event.source.userId , 'test message');
+    bot.push( event.source.userId , 'http://www.google.com');
 
     if( event.message.text.indexOf("團購") !== -1 ){
         event.reply( '妳想要團購嗎？' ).then(function (data) {
