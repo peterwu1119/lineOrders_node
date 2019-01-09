@@ -135,6 +135,7 @@ function create_flex_message( user_id ){
     }
 
     console.log('before request');
+    console.log( options )
 
     request( options, callback );
 }
