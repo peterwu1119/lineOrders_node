@@ -131,6 +131,7 @@ function create_flex_message( user_id ){
     function callback(error, response, body) {
         console.log( error );
         console.log( body );
+        console.log( response.statusCode );
     }
 
     console.log('before request');
