@@ -96,8 +96,8 @@ function create_flex_message( user_id ){
 
     const options = {
         url: 'https://api.line.me/v2/bot/message/push',
-        method : 'post',
-        formData : JSON.stringify({
+        method : 'POST',
+        form : {
             'to' : user_id, 
             'messages' : [
                 {
@@ -122,7 +122,7 @@ function create_flex_message( user_id ){
                   }
                 }
             ]
-        }),
+        },
         headers: {
             'Content-Type' : 'application/json',
             'Authorization': 'Bearer {' + process.env.CHANNEL_TOKEN +'}'
@@ -132,10 +132,8 @@ function create_flex_message( user_id ){
     function callback(error, response, body) {
         console.log( error );
         console.log( body );
-        if (!error && response.statusCode == 200) {
-
-        }
     }
+
     console.log('before request');
 
     request( options, callback );
