@@ -44,7 +44,11 @@ bot.on('message', function (event) {
     console.log( event.source.profile() )
     event.source.profile().then(function (profile) {
         console.log( profile )
-        event.reply('Hello ' + profile.displayName);
+        event.reply('Hello ' + profile.displayName).then(function(data){
+            console.log('Success' , data);
+        }).catch(function(error){
+            console.log('Error' , error);
+        });
     });
 
     /*
