@@ -97,6 +97,7 @@ function create_flex_message( user_id ){
     const options = {
         url: 'https://api.line.me/v2/bot/message/push',
         method : 'POST',
+        json : true,
         form : JSON.stringify({
             'to' : user_id, 
             'messages' : [
