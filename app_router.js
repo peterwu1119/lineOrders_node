@@ -130,6 +130,7 @@ function create_flex_message( user_id ){
     };
 
     function callback(error, response, body) {
+        console.log( error );
         if (!error && response.statusCode == 200) {
 
         }
