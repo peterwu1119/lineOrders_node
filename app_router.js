@@ -41,6 +41,10 @@ bot.on('message', function (event) {
         stickerId: '1'
     })
 
+    event.source.profile().then(function (profile) {
+        event.reply('Hello ' + profile.displayName);
+    });
+
     /*
     event.reply(event.message.text).then(function (data) {
         console.log('Success', data);
