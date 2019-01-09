@@ -1,5 +1,6 @@
 const express = require('express');
 const linebot = require('linebot');
+const request = require('request');
 var app = module.exports = express();
 
 const bot = linebot({
