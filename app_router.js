@@ -81,6 +81,7 @@ app.post('/ajax', function (request, response) {
 });
 
 function create_flex_message( user_id ){
+    console.log( user_id );
     /*
     request.post(
         'https://api.line.me/v2/bot/message/push',
@@ -133,6 +134,7 @@ function create_flex_message( user_id ){
 
         }
     }
+    console.log('before request');
 
     request( options, callback );
 }
