@@ -44,11 +44,18 @@ bot.on('message', function (event) {
     console.log( event.source.profile() )
     event.source.profile().then(function (profile) {
         console.log( profile )
+        bot.push( event.source.userId , 'Hello ' + profile.displayName );
+
+        // reply token can only be used one time , 
+        // if we want to reply multiple times in single webhook event
+        // use push message 
+        /*
         event.reply('Hello ' + profile.displayName).then(function(data){
             console.log('Success' , data);
         }).catch(function(error){
             console.log('Error' , error);
         });
+        */
     });
 
     /*
