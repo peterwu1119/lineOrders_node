@@ -26,7 +26,7 @@ bot.on('join' , function(event){
 
 bot.on('message', function (event) {
     console.log( event )
-    bot.push( event.source.userId , 'http://www.google.com');
+    //bot.push( event.source.userId , 'http://www.google.com');
 
     if( event.message.text.indexOf("團購") !== -1 ){
         event.reply( '妳想要團購嗎？' ).then(function (data) {
@@ -36,16 +36,18 @@ bot.on('message', function (event) {
         });
     }
 
+    /*
     event.reply({
         type: 'sticker',
         packageId: '1',
         stickerId: '1'
     })
+    */
 
     console.log( event.source.profile() )
     event.source.profile().then(function (profile) {
         console.log( profile )
-        bot.push( event.source.userId , 'Hello ' + profile.displayName );
+        //bot.push( event.source.userId , 'Hello ' + profile.displayName );
 
         // reply token can only be used one time , 
         // if we want to reply multiple times in single webhook event
