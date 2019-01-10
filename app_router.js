@@ -232,7 +232,7 @@ function create_flex_message( user_id ){
                               "height": "sm",
                               "action": {
                                 "type": "uri",
-                                "label": "CALL",
+                                "label": "建立團購",
                                 "uri": "https://linecorp.com"
                               }
                             },
@@ -242,7 +242,7 @@ function create_flex_message( user_id ){
                               "height": "sm",
                               "action": {
                                 "type": "uri",
-                                "label": "WEBSITE",
+                                "label": "團購列表",
                                 "uri": "https://linecorp.com"
                               }
                             },
