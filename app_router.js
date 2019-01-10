@@ -163,6 +163,7 @@ function create_flex_message( user_id ){
 
     console.log('before request');
     console.log( options )
+    console.log( process.env);
 
     request( options, callback );
 }
