@@ -28,12 +28,8 @@ bot.on('message', function (event) {
     console.log( event )
     //bot.push( event.source.userId , 'http://www.google.com');
 
-    if( event.message.text.indexOf("團購") !== -1 ){
-        event.reply( '妳想要團購嗎？' ).then(function (data) {
-            console.log('Success', data);
-        }).catch(function (error) {
-            console.log('Error', error);
-        });
+    if( event.message.text === "我要團購" ){
+        create_flex_message( event.source.userId );
     }
 
     /*
@@ -61,7 +57,6 @@ bot.on('message', function (event) {
         */
     });
 
-    create_flex_message( event.source.userId );
 
     /*
     event.reply(event.message.text).then(function (data) {
