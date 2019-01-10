@@ -126,7 +126,7 @@ function create_flex_message( user_id ){
                               "action": {
                                 "type": "uri",
                                 "label": "建立團購",
-                                "uri": "https://linecorp.com"
+                                "uri": process.env.DOMAIN_NAME
                               }
                             },
                             {
@@ -136,7 +136,7 @@ function create_flex_message( user_id ){
                               "action": {
                                 "type": "uri",
                                 "label": "團購列表",
-                                "uri": "https://linecorp.com"
+                                "uri": process.env.DOMAIN_NAME
                               }
                             },
                             {
