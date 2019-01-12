@@ -12,10 +12,12 @@ const bot = linebot({
 const linebotParser = bot.parser();
 
 // Redirect linebot webhook url to linebot parser
+
+var host_url = '';
+
 app.post('/linewebhook',
         function(req ,res , next){ 
-            console.log('middleware');
-            console.log( req.get('host') );
+            host_url = req.get('host');
             next();
         } , 
         linebotParser
@@ -81,7 +83,7 @@ function create_flex_group_buy_message( user_id ){
                     "action": {
                     "type": "uri",
                     "label": "建立團購",
-                    "uri": process.env.DOMAIN_NAME
+                    "uri": host_url 
                     }
                 },
                 {
@@ -91,7 +93,7 @@ function create_flex_group_buy_message( user_id ){
                     "action": {
                     "type": "uri",
                     "label": "團購列表",
-                    "uri": process.env.DOMAIN_NAME
+                    "uri": host_url
                     }
                 },
                 {
