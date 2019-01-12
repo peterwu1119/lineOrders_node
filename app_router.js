@@ -16,6 +16,7 @@ app.post('/linewebhook',
         function(req ,res , next){ 
             console.log('middleware');
             console.log( req );
+            next();
         } , 
         linebotParser
 );
