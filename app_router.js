@@ -105,6 +105,7 @@ function create_flex_group_buy_message( user_id ){
             }
         }
     }
+    console.log( host_url );
 
     bot.push( user_id , message );
 }
