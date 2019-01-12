@@ -17,7 +17,7 @@ var host_url = '';
 
 app.post('/linewebhook',
         function(req ,res , next){ 
-            host_url = req.protocol + '://' + req.get('host') + req.originalUrl;
+            host_url = req.protocol + '://' + req.get('host');
             next();
         } , 
         linebotParser
