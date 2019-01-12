@@ -12,7 +12,13 @@ const bot = linebot({
 const linebotParser = bot.parser();
 
 // Redirect linebot webhook url to linebot parser
-app.post('/linewebhook', linebotParser);
+app.post('/linewebhook',
+        function(req ,res , next){ 
+            console.log('middleware');
+            console.log( req );
+        } , 
+        linebotParser
+);
 
 bot.on('follow' , function(event){
     console.log( event );
