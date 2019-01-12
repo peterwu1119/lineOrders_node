@@ -15,7 +15,7 @@ const linebotParser = bot.parser();
 app.post('/linewebhook',
         function(req ,res , next){ 
             console.log('middleware');
-            console.log( req );
+            console.log( req.get('host') );
             next();
         } , 
         linebotParser
