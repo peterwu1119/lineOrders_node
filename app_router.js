@@ -48,7 +48,7 @@ function create_flex_group_buy_message( user_id ){
     
     var message =  {
         "type": "flex",
-        "altText": "This is a Flex Message",
+        "altText": "團購功能選單",
         "contents": {
             "type": "bubble",
             "hero": {
@@ -96,5 +96,6 @@ function create_flex_group_buy_message( user_id ){
             }
         }
     }
+
     bot.push( user_id , message );
 }
