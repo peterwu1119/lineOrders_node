@@ -1,5 +1,14 @@
 var app = require('./app_router.js')
 
+// Serve static files from the React app
+app.use( express.static( path.join( __dirname, 'client/build' ) ) );
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get( '*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 //The 'process' object is a global that provides information about, and control over, the current Node.js process.
 //As a global, it is always available to Node.js applications without using require().
 //The 'process.env' property returns an object containing the user environment.
