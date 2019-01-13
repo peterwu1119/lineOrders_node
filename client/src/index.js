@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, Link } from 'react-router'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   (
-    <Router history={hashHistory}>
+    <Router>
       <Route path="/" component={App}>
         <Route path="about" component={About}/>
         <Route path="users/:userId" component={Users} />
