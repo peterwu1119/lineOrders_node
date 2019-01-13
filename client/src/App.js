@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router'
+import { Router, Route } from 'react-router'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -22,22 +23,9 @@ class App extends React.Component {
   }
 }
 
-class About extends React.Component {
-  render () {
-    return (<h1>About</h1>);
-  }
-}
 
-class Users extends React.Component {
-  render () {
-    const id = this.props.params.userId;
-    return (
-      <div>
-        user id: {id}
-      </div>
-    )
-  }
-}
+
+
 
 /*
 class App extends Component {
