@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './css/index.css';
 import App from './components/App';
 import About from './components/CreateGroupBuy';
-import Users from './components/StartGroupBuy';
+import Users from './components/JoinGroupBuy';
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
