@@ -4,6 +4,9 @@ const request = require('request');
 var bodyParser = require('body-parser')
 var app = module.exports = express();
 
+app.use( bodyParser.urlencoded( { extended : false }) );
+app.use( bodyParser.json() );
+
 const bot = linebot({
     channelId: process.env.CHANNEL_ID,
     channelSecret: process.env.CHANNEL_SECRET,
