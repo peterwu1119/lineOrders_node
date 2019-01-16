@@ -4,8 +4,6 @@ const request = require('request');
 var bodyParser = require('body-parser')
 var app = module.exports = express();
 
-app.use( bodyParser.urlencoded( { extended : false }) );
-app.use( bodyParser.json() );
 
 const bot = linebot({
     channelId: process.env.CHANNEL_ID,
@@ -52,6 +50,9 @@ bot.on('message', function (event) {
 app.get('/', function (request, response) {
     response.json({ message: 'response from node service!' });
 });
+
+app.use( bodyParser.urlencoded( { extended : false }) );
+app.use( bodyParser.json() );
 
 app.post('/ajax', function (request, response) {
     response.send("response by ajax");
