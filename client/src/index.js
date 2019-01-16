@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import './css/index.css';
 import App from './components/App';
-import About from './components/About';
-import Users from './components/Users';
+import About from './components/CreateGroupBuy';
+import Users from './components/StartGroupBuy';
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Users extends React.Component {
+class JoinGroupBuy extends React.Component {
   render () {
     const id = this.props.match.params.userId;
     return (
@@ -11,4 +11,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default JoinGroupBuy;
