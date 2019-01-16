@@ -83,7 +83,7 @@ function create_flex_group_buy_message( user_id ){
                     "action": {
                     "type": "uri",
                     "label": "建立團購",
-                    "uri": host_url + '/about'
+                    "uri": host_url + '/createGroupBuy'
                     }
                 },
                 {
@@ -93,7 +93,7 @@ function create_flex_group_buy_message( user_id ){
                     "action": {
                     "type": "uri",
                     "label": "團購列表",
-                    "uri": host_url + '/users/2'
+                    "uri": host_url + '/joinGroupBuy'
                     }
                 },
                 {

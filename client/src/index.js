@@ -15,7 +15,7 @@ ReactDOM.render(
   (
     <Router>
         <div>
-          <Route path="/" component={App}/>
+          {/* <Route path="/" component={App}/> */}
           <Route path="/createGroupBuy" component={CreateGroupBuy}/>
           <Route path="/joinGroupBuy" component={JoinGroupBuy} />
         </div>
