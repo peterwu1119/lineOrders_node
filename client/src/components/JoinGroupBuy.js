@@ -5,7 +5,7 @@ class JoinGroupBuy extends React.Component {
     const id = this.props.match.params.userId;
     return (
       <div>
-        user id: {id}
+        <h1>訂購</h1>
       </div>
     )
   }

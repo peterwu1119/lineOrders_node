@@ -13,9 +13,8 @@ class App extends React.Component {
       <div>
         <h1>App</h1>
         <ul>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/users/1">Users 1</Link></li>
-          <li><Link to="/users/2">Users 2</Link></li>
+          <li><Link to="/createGroupBuy">Create Group Buy</Link></li>
+          <li><Link to="/joinGroupBuy">Join Group Buy</Link></li>
         </ul>
       </div>
     );
