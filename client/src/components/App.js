@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import logo from './logo.svg';
-import './App.css';
-import './index.css';
+import logo from '../logo.svg';
+import '../css/App.css';
+import '../css/index.css';
 
 class App extends React.Component {
   render () {

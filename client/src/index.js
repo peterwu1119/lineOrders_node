@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { hashHistory } from 'react-router'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import './index.css';
-import App from './App';
-import About from './About';
-import Users from './Users';
+import './css/index.css';
+import App from './components/App';
+import About from './components/About';
+import Users from './components/Users';
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
