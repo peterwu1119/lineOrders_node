@@ -41,7 +41,7 @@ class CreateGroupBuy extends React.Component {
                     "action": {
                     "type": "uri",
                     "label": "建立團購",
-                    "uri": host_url + '/createGroupBuy/' + user_id
+                    "uri": 'http://www.google.com' 
                     }
                 },
                 {
@@ -51,7 +51,7 @@ class CreateGroupBuy extends React.Component {
                     "action": {
                     "type": "uri",
                     "label": "團購列表",
-                    "uri": host_url + '/joinGroupBuy'
+                    "uri": 'http://www.google.com' 
                     }
                 },
                 {
