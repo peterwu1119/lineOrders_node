@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { hashHistory } from 'react-router'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import './index.css';
@@ -13,10 +14,11 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   (
     <Router>
-      <Route path="/" component={App}>
-        <Route path="about" component={About}/>
-        <Route path="users/:userId" component={Users} />
-      </Route>
+        <div>
+          <Route path="/" component={App}/>
+          <Route path="/about" component={About}/>
+          <Route path="/users/:userId" component={Users} />
+        </div>
     </Router>
   ),
   document.getElementById('root')

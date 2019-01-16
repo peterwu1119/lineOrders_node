@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Users extends React.Component {
   render () {
-    const id = this.props.params.userId;
+    const id = this.props.match.params.userId;
     return (
       <div>
         user id: {id}
