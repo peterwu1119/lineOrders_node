@@ -14,9 +14,54 @@ class CreateGroupBuy extends React.Component {
     axios.post('/api/pushMessage', {
       user_id : user_id,
       message : {
-
-
-
+        "type": "flex",
+        "altText": "團購功能選單",
+        "contents": {
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "http://linecorp.com/"
+                }
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                    "type": "uri",
+                    "label": "建立團購",
+                    "uri": host_url + '/createGroupBuy/' + user_id
+                    }
+                },
+                {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                    "type": "uri",
+                    "label": "團購列表",
+                    "uri": host_url + '/joinGroupBuy'
+                    }
+                },
+                {
+                    "type": "spacer",
+                    "size": "sm"
+                }
+                ],
+                "flex": 0
+            }
+        }
       }
     })
     .then( function( response ) {

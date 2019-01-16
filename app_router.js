@@ -54,7 +54,8 @@ app.post('/ajax', function (request, response) {
 });
 
 app.post('/api/pushMessage', function(request, response){
-    console.log( request );
+    console.log( request.body );
+    //bot.push( user_id , message );
 })
 
 function create_flex_group_buy_message( user_id ){
