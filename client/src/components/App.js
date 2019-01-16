@@ -13,7 +13,7 @@ class App extends React.Component {
       <div>
         <h1>App</h1>
         <ul>
-          <li><Link to="/createGroupBuy/:user_id">Create Group Buy</Link></li>
+          <li><Link to="/createGroupBuy">Create Group Buy</Link></li>
           <li><Link to="/joinGroupBuy">Join Group Buy</Link></li>
         </ul>
       </div>

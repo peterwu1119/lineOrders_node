@@ -3,6 +3,13 @@ import axios from 'axios';
 
 class CreateGroupBuy extends React.Component {
 
+  constructor(props, context){
+    super(props, context);
+
+    console.log( props );
+    console.log( props.match.params.name );
+  }
+
   pushMessage(){
     console.log( 'in push message');
 
@@ -17,10 +24,6 @@ class CreateGroupBuy extends React.Component {
     .then( function( response ) {
 
 		})
-  }
-
-  componentDidMount(){
-    console.log( this.props );
   }
 
   render () {
