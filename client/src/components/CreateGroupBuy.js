@@ -5,7 +5,6 @@ class CreateGroupBuy extends React.Component {
 
   pushMessage(){
     console.log( 'in push message');
-    console.log( this.props ); 
 
     axios.post('/api/pushMessage', {
       user_id : '12345',
