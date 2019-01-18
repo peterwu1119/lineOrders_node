@@ -1,7 +1,8 @@
 const express = require('express');
 const linebot = require('linebot');
 const request = require('request');
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const formidable = require('formidable');
 var app = module.exports = express();
 
 
@@ -64,7 +65,17 @@ app.post('/api/pushMessage', function(request, response){
 })
 
 app.post('/api/uploadImageToImgur', function(request, response){
-    console.log( request.body );
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+        if (err) {
+          console.error('Error', err)
+          throw err
+        }
+        console.log('Fields', fields)
+        console.log('Files', files)
+        files.map(file => {
+          console.log(file)
+        })
+    })
 })
 
 
