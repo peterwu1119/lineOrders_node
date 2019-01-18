@@ -12,6 +12,8 @@ class CreateGroupBuy extends React.Component {
   pushMessage(){
     //post local choosen image to imgur api
     //use request module
+    /*
+    console.log( document.getElementById('groupBuyImage').files[0] )
     const options = {
       url: 'https://api.imgur.com/3/image',
       method : 'POST',
@@ -28,6 +30,18 @@ class CreateGroupBuy extends React.Component {
     }
 
     request( options, callback );
+    */
+
+    var form = new FormData();
+    form.append('image', new Blob([ document.getElementById('groupBuyImage').files[0] ]) );
+
+    var request = new XMLHttpRequest();
+    request.open("POST",'https://api.imgur.com/3/image');
+    request.setRequestHeader('Authorization', 'Client-ID ${config.client}');
+    request.send( form );
+    request.onload = function() {
+        //callback(request.status, request.responseText);
+    };
 
 
 
