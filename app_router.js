@@ -71,15 +71,12 @@ app.post('/api/uploadImageToImgur', function(request, response){
     new formidable.IncomingForm().parse(request, ( err, fields, files) => {
         console.log( files.image );
 
-        var formData = new FormData();
-        formData.append('image', files.image );
-
         fetch('https://api.imgur.com/3/image', {
             method: 'POST',
             headers: {
                 'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
             },
-            body: formData 
+            body: { 'image' : files.image } 
         })
         .then(function(json) {
             console.log(json);
