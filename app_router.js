@@ -3,6 +3,7 @@ const linebot = require('linebot');
 const request = require('request');
 const bodyParser = require('body-parser');
 const formidable = require('formidable');
+const fetch = require('node-fetch');
 var app = module.exports = express();
 
 
@@ -66,24 +67,20 @@ app.post('/api/pushMessage', function(request, response){
 
 app.post('/api/uploadImageToImgur', function(request, response){
     
-    var imageFile = null; 
     new formidable.IncomingForm().parse(request, ( err, fields, files) => {
-        imageFile = files.image;
+        console.log( files.image );
+
+        fetch('https://api.imgur.com/3/image', {
+            method: 'POST',
+            headers: {
+                'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
+            },
+            body: files.image // Here, stringContent or bufferContent would also work
+        })
+        then(function(json) {
+            console.log(json);
+        });
     })
-
-    console.log( imageFile );
-
-    var form = new FormData();
-    form.append('image', Blob([ imageFile ]) );
-
-    var request = new XMLHttpRequest();
-    request.open('POST','https://api.imgur.com/3/image');
-    request.setRequestHeader('Authorization', 'Client-ID ' + process.env.IMGUR_CLIENT_ID );
-    request.send( form );
-    request.onload = function() {
-        //callback(request.status, request.responseText);
-        console.log( response.responseText );
-    };
 })
 
 
