@@ -76,7 +76,7 @@ app.post('/api/uploadImageToImgur', function(request, response){
                 'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
             },
             body: files.image // Here, stringContent or bufferContent would also work
-        })
+        }).
         then(function(json) {
             console.log(json);
         });
