@@ -32,6 +32,7 @@ class CreateGroupBuy extends React.Component {
     request( options, callback );
     */
 
+    /*
     var form = new FormData();
     form.append('image', new Blob([ document.getElementById('groupBuyImage').files[0] ]) );
 
@@ -42,6 +43,13 @@ class CreateGroupBuy extends React.Component {
     request.onload = function() {
         //callback(request.status, request.responseText);
     };
+    */
+
+    var formData = new FormData();
+    formData.append( 'image', document.getElementById('groupBuyImage').files[0] );
+    axios.post('/api/uploadImageToImgur', formData, {
+        
+    })
 
 
 
