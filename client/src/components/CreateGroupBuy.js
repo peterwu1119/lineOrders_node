@@ -9,6 +9,27 @@ class CreateGroupBuy extends React.Component {
   }
 
   pushMessage(){
+    //post local choosen image to imgur api
+    //use request module
+    const options = {
+      url: 'https://api.imgur.com/3/image',
+      method : 'POST',
+      form : {
+          'image' : document.getElementById('groupBuyImage').files[0], 
+      },
+      headers: {
+          'Authorization': 'Client-ID {{clientId}}'
+      }
+    };
+
+    function callback(error, response, body) {
+      console.log( response );
+    }
+
+    request( options, callback );
+
+
+
     var user_id = this.props.match.params.user_id;
 
     axios.post('/api/pushMessage', {
