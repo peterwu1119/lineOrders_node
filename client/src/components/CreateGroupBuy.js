@@ -15,7 +15,7 @@ class CreateGroupBuy extends React.Component {
     const options = {
       url: 'https://api.imgur.com/3/image',
       method : 'POST',
-      form : {
+      formData : {
           'image' : document.getElementById('groupBuyImage').files[0], 
       },
       headers: {
