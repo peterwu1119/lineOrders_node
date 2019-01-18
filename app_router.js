@@ -63,6 +63,11 @@ app.post('/api/pushMessage', function(request, response){
     bot.push( request.body.user_id , request.body.message );
 })
 
+app.post('/api/uploadImageToImgur', function(request, response){
+    console.log( request.body );
+})
+
+
 function create_flex_group_buy_message( user_id ){
     
     var message =  {
