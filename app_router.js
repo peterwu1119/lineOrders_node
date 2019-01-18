@@ -65,7 +65,7 @@ app.post('/api/pushMessage', function(request, response){
 })
 
 app.post('/api/uploadImageToImgur', function(request, response){
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    new formidable.IncomingForm().parse(request, (err, fields, files) => {
         if (err) {
           console.error('Error', err)
           throw err
