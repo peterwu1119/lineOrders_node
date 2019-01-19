@@ -78,8 +78,13 @@ app.post('/api/uploadImageToImgur', function(request, response){
             },
             body: { 'image' : files.image } 
         })
-        .then(function(json) {
-            console.log(json);
+        .then(function( json ) {
+            console.log('in then');
+            console.log( json );
+        })
+        .catch(function( err ){
+            console.error('in error ')
+            console.error(err)
         });
     })
 })
