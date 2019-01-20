@@ -33,19 +33,25 @@ class CreateGroupBuy extends React.Component {
     request( options, callback );
     */
 
-    /*
     var form = new FormData();
-    form.append('image', new Blob([ document.getElementById('groupBuyImage').files[0] ]) );
+    form.append('image', document.getElementById('groupBuyImage').files[0] );
+
+    var imgur_client_id = '';
+
+    axios.get('/api/getImgurClientId')
+    .then(function (response) {
+      console.log(response);
+    })
 
     var request = new XMLHttpRequest();
     request.open("POST",'https://api.imgur.com/3/image');
-    request.setRequestHeader('Authorization', 'Client-ID ${config.client}');
+    request.setRequestHeader('Authorization', 'Client-ID ' + imgur_client_id);
     request.send( form );
     request.onload = function() {
-        //callback(request.status, request.responseText);
+        console.log( JSON.parse( request.responseText ) );
     };
-    */
 
+    /*
     var formData = new FormData();
     formData.append( 'image',  document.getElementById('groupBuyImage').files[0] );
     axios.post('/api/uploadImageToImgur', formData, {
@@ -57,6 +63,7 @@ class CreateGroupBuy extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+    */
 
 
 

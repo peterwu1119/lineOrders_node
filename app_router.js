@@ -68,31 +68,8 @@ app.post('/api/pushMessage', function(request, response){
     bot.push( request.body.user_id , request.body.message );
 })
 
-app.post('/api/uploadImageToImgur', function(request, response){
-
-    const form = new FormData();
-    
-    new formidable.IncomingForm().parse(request, ( err, fields, files) => {
-        console.log( files.image );
-
-        form.append( 'image', files.image );
-
-        fetch('https://api.imgur.com/3/image', {
-            method: 'POST',
-            headers: {
-                'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
-            },
-            body: form
-        })
-        .then(function( json ) {
-            console.log('in then');
-            console.log( json );
-        })
-        .catch(function( err ){
-            console.error('in error ')
-            console.error(err)
-        });
-    })
+app.get('/api/getImgurClientId', function(request, response){
+    response.send( process.env.IMGUR_CLIENT_ID );
 })
 
 
