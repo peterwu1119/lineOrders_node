@@ -5,6 +5,7 @@ import request from 'request'
 class CreateGroupBuy extends React.Component {
 
   constructor(props, context){
+    console.log('abc')
     super(props, context);
     this.pushMessage = this.pushMessage.bind( this );
   }
@@ -50,6 +51,12 @@ class CreateGroupBuy extends React.Component {
     axios.post('/api/uploadImageToImgur', formData, {
         
     })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
 
 
@@ -109,8 +116,12 @@ class CreateGroupBuy extends React.Component {
       }
     })
     .then( function( response ) {
+      console.log( response );
 
-		})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render () {

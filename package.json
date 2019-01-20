@@ -7,7 +7,6 @@
   "scripts": {
     "start": "node App.js",
     "test": "mocha",
-    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "express": "^4.16.4",
