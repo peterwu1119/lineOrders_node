@@ -39,17 +39,15 @@ class CreateGroupBuy extends React.Component {
     var imgur_client_id = '';
 
     axios.get('/api/getImgurClientId')
-    .then(function (response) {
-      console.log(response);
+    .then( function ( response ) {
+      var request = new XMLHttpRequest();
+      request.open("POST",'https://api.imgur.com/3/image');
+      request.setRequestHeader('Authorization', 'Client-ID ' + response.data);
+      request.send( form );
+      request.onload = function() {
+          console.log( JSON.parse( request.responseText ) );
+      };
     })
-
-    var request = new XMLHttpRequest();
-    request.open("POST",'https://api.imgur.com/3/image');
-    request.setRequestHeader('Authorization', 'Client-ID ' + imgur_client_id);
-    request.send( form );
-    request.onload = function() {
-        console.log( JSON.parse( request.responseText ) );
-    };
 
     /*
     var formData = new FormData();
