@@ -70,30 +70,19 @@ app.post('/api/pushMessage', function(request, response){
 
 app.post('/api/uploadImageToImgur', function(request, response){
 
-    imgur.setClientId( process.env.IMGUR_CLIENT_ID );
-
     const form = new FormData();
     
     new formidable.IncomingForm().parse(request, ( err, fields, files) => {
         console.log( files.image );
 
-        imgur.uploadFile( files.image )
-        .then(function (json) {
-            console.log(json.data.link);
-        })
-        .catch(function (err) {
-            console.error(err.message);
-        });
-
-        /*        
-        form.append( 'image', Buffer.from( JSON.stringify( files.image ) ) );
+        form.append( 'image', FileReader.readAsArrayBuffer( files.image ) );
 
         fetch('https://api.imgur.com/3/image', {
             method: 'POST',
             headers: {
                 'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
             },
-            body: JSON.stringify( form )
+            body: form
         })
         .then(function( json ) {
             console.log('in then');
@@ -103,7 +92,6 @@ app.post('/api/uploadImageToImgur', function(request, response){
             console.error('in error ')
             console.error(err)
         });
-        */
     })
 })
 
