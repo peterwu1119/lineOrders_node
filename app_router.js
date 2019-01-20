@@ -79,7 +79,7 @@ app.post('/api/uploadImageToImgur', function(request, response){
             headers: {
                 'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
             },
-            body: form
+            body: JSON.stringify( form )
         })
         .then(function( json ) {
             console.log('in then');
