@@ -6,6 +6,7 @@ const formidable = require('formidable');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const fs = require('fs');
+const imgur = require('imgur');
 var app = module.exports = express();
 
 
@@ -69,10 +70,22 @@ app.post('/api/pushMessage', function(request, response){
 
 app.post('/api/uploadImageToImgur', function(request, response){
 
+    imgur.setClientId( process.env.IMGUR_CLIENT_ID );
+
     const form = new FormData();
     
     new formidable.IncomingForm().parse(request, ( err, fields, files) => {
         console.log( files.image );
+
+        imgur.uploadFile( files.image )
+        .then(function (json) {
+            console.log(json.data.link);
+        })
+        .catch(function (err) {
+            console.error(err.message);
+        });
+
+        /*        
         form.append( 'image', Buffer.from( JSON.stringify( files.image ) ) );
 
         fetch('https://api.imgur.com/3/image', {
@@ -90,6 +103,7 @@ app.post('/api/uploadImageToImgur', function(request, response){
             console.error('in error ')
             console.error(err)
         });
+        */
     })
 })
 
