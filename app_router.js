@@ -78,7 +78,7 @@ app.post('/api/uploadImageToImgur', function(request, response){
         fetch('https://api.imgur.com/3/image', {
             method: 'POST',
             headers: {
-                'Authorization' : 'Client-ID abc' 
+                'Authorization' : 'Client-ID ' + process.env.IMGUR_CLIENT_ID
             },
             body: JSON.stringify( form )
         })
