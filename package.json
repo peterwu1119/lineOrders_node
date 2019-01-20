@@ -6,7 +6,7 @@
   "main": "App.js",
   "scripts": {
     "start": "node App.js",
-    "test": "mocha",
+    "test": "mocha"
   },
   "dependencies": {
     "express": "^4.16.4",
