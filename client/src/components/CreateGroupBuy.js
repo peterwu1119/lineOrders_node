@@ -7,31 +7,13 @@ class CreateGroupBuy extends React.Component {
   constructor(props, context){
     console.log('abc')
     super(props, context);
+    this.createMenu = this.createMenu.bind( this );
+    this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
   }
 
-  pushMessage(){
+  saveImage(){
     //post local choosen image to imgur api
-    //use request module
-    /*
-    console.log( document.getElementById('groupBuyImage').files[0] )
-    const options = {
-      url: 'https://api.imgur.com/3/image',
-      method : 'POST',
-      formData : {
-          'image' : document.getElementById('groupBuyImage').files[0], 
-      },
-      headers: {
-          'Authorization': 'Client-ID {{clientId}}'
-      }
-    };
-
-    function callback(error, response, body) {
-      console.log( response );
-    }
-
-    request( options, callback );
-    */
 
     var form = new FormData();
     form.append('image', document.getElementById('groupBuyImage').files[0] );
@@ -48,23 +30,9 @@ class CreateGroupBuy extends React.Component {
           console.log( JSON.parse( request.responseText ) );
       };
     })
+  }
 
-    /*
-    var formData = new FormData();
-    formData.append( 'image',  document.getElementById('groupBuyImage').files[0] );
-    axios.post('/api/uploadImageToImgur', formData, {
-        
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    */
-
-
-
+  pushMessage(){
     var user_id = this.props.match.params.user_id;
 
     axios.post('/api/pushMessage', {
@@ -129,13 +97,18 @@ class CreateGroupBuy extends React.Component {
     });
   }
 
+  createMenu(){
+    this.saveImage();
+    this.pushMessage();
+  }
+
   render () {
     return (
       <div>
         <h1>建立團購</h1>
         請上傳團購圖片： <input id='groupBuyImage' type='file' />
         <hr/>
-        <input type='button' value='建立' onClick={ this.pushMessage } />
+        <input type='button' value='建立' onClick={ this.createMenu } />
       </div>
     );
   }
