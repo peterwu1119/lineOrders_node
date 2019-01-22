@@ -5,34 +5,47 @@ import request from 'request'
 class CreateGroupBuy extends React.Component {
 
   constructor(props, context){
-    console.log('abc')
     super(props, context);
     this.createMenu = this.createMenu.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
   }
 
-  saveImage(){
-    //post local choosen image to imgur api
-
-    var form = new FormData();
-    form.append('image', document.getElementById('groupBuyImage').files[0] );
-
-    var imgur_client_id = '';
-
+  createMenu(){
+    const _this = this;
     axios.get('/api/getImgurClientId')
-    .then( function ( response ) {
-      var request = new XMLHttpRequest();
-      request.open("POST",'https://api.imgur.com/3/image');
-      request.setRequestHeader('Authorization', 'Client-ID ' + response.data);
-      request.send( form );
-      request.onload = function() {
-          console.log( JSON.parse( request.responseText ) );
-      };
+    .then(function( response ) {
+      var client_id = response.data;
+      return _this.saveImage( client_id );
+    })
+    .then(function(img_url ){
+      _this.pushMessage( img_url );
     })
   }
 
-  pushMessage(){
+  saveImage( client_id ){
+    //post local choosen image to imgur api
+    return new Promise( function( resolve , reject ){
+      var form = new FormData();
+      form.append('image', document.getElementById('groupBuyImage').files[0] );
+
+      var request = new XMLHttpRequest();
+      request.open("POST",'https://api.imgur.com/3/image');
+      request.setRequestHeader('Authorization', 'Client-ID ' + client_id );
+      request.onload = function() {
+        if( request.status == 200){
+          var imgur_obj =  JSON.parse( request.responseText );
+          resolve( imgur_obj.data.link );
+        }
+        else{
+          reject( 'Error :' + request.responseText);
+        }
+      };
+      request.send( form );
+    })
+  }
+
+  pushMessage( img_url ){
     var user_id = this.props.match.params.user_id;
 
     axios.post('/api/pushMessage', {
@@ -44,7 +57,7 @@ class CreateGroupBuy extends React.Component {
             "type": "bubble",
             "hero": {
                 "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "url": img_url,
                 "size": "full",
                 "aspectRatio": "20:13",
                 "aspectMode": "cover",
@@ -90,16 +103,10 @@ class CreateGroupBuy extends React.Component {
     })
     .then( function( response ) {
       console.log( response );
-
     })
     .catch(function (error) {
       console.log(error);
     });
-  }
-
-  createMenu(){
-    this.saveImage();
-    this.pushMessage();
   }
 
   render () {
