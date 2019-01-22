@@ -103,7 +103,7 @@ function create_flex_group_buy_message( user_id ){
                     "action": {
                     "type": "uri",
                     "label": "建立團購",
-                    "uri": 'line://app/1625435475-XBBzeWb' 
+                    "uri": 'line://app/1625435475-XBBzeWbL' 
                     }
                 },
                 {
