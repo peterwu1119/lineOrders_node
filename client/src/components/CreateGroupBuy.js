@@ -15,7 +15,7 @@ class CreateGroupBuy extends React.Component {
     const script = document.createElement("script");
 
     script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
-    script.async = true;
+    script.async = false;
 
     document.body.appendChild(script);
   }
@@ -31,7 +31,7 @@ class CreateGroupBuy extends React.Component {
       _this.pushMessage( img_url );
     })
     .then(function(){
-      liff.closeWindow(); 
+      _this.liff.closeWindow(); 
     })
   }
 
