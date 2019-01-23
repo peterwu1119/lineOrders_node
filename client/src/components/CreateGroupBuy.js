@@ -15,7 +15,7 @@ class CreateGroupBuy extends React.Component {
     const script = document.createElement("script");
 
     script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
-    script.async = false;
+    script.async = true;
 
     document.body.appendChild(script);
   }
