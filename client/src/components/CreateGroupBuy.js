@@ -11,6 +11,15 @@ class CreateGroupBuy extends React.Component {
     this.pushMessage = this.pushMessage.bind( this );
   }
 
+  componentDidMount () {
+    const script = document.createElement("script");
+
+    script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+  }
+
   createMenu(){
     const _this = this;
     axios.get('/api/getImgurClientId')
@@ -20,6 +29,9 @@ class CreateGroupBuy extends React.Component {
     })
     .then(function(img_url ){
       _this.pushMessage( img_url );
+    })
+    .then(function(){
+      liff.closeWindow(); 
     })
   }
 
@@ -48,7 +60,7 @@ class CreateGroupBuy extends React.Component {
   pushMessage( img_url ){
     var user_id = this.props.match.params.user_id;
 
-    axios.post('/api/pushMessage', {
+    return axios.post('/api/pushMessage', {
       user_id : user_id,
       message : {
         "type": "flex",
@@ -101,12 +113,6 @@ class CreateGroupBuy extends React.Component {
         }
       }
     })
-    .then( function( response ) {
-      console.log( response );
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
   }
 
   render () {
