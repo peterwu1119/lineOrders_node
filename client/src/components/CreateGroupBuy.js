@@ -11,13 +11,23 @@ class CreateGroupBuy extends React.Component {
     this.pushMessage = this.pushMessage.bind( this );
   }
 
-  componentDidMount () {
-    const script = document.createElement("script");
+  componentWillMount () {
+    //add liff sdk
+    var script = document.createElement("script");
 
     script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
     script.async = true;
 
     document.body.appendChild(script);
+    
+    //add tencent vconsole for debugging liff app
+    var script = document.createElement("script");
+
+    script.src = "https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
   }
 
   createMenu(){
@@ -64,7 +74,7 @@ class CreateGroupBuy extends React.Component {
       user_id : user_id,
       message : {
         "type": "flex",
-        "altText": "團購功能選單",
+        "altText": "團購功能",
         "contents": {
             "type": "bubble",
             "hero": {
