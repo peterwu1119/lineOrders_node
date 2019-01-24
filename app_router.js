@@ -88,7 +88,7 @@ function create_flex_group_buy_message( user_id ){
                 "aspectMode": "cover",
                 "action": {
                 "type": "uri",
-                "uri": "http://linecorp.com/"
+                "uri": "http://www.google.com"
                 }
             },
             "footer": {
