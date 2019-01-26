@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.1",
     "formidable": "^1.2.1",
     "ftp": "^0.3.10",
     "imgur": "^0.3.1",

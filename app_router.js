@@ -8,6 +8,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const imgur = require('imgur');
 const Ftp = require('ftp');
+const fileUpload = require('express-fileupload');
 var app = module.exports = express();
 
 
@@ -73,6 +74,7 @@ app.get('/api/getImgurClientId', function(request, response){
     response.send( process.env.IMGUR_CLIENT_ID );
 })
 
+app.use( fileUpload());
 app.post('/api/putImageToFtp', function( request, response){
     console.log( request.files );
     var ftp = new Ftp();
