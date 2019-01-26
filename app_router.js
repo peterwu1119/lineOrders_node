@@ -79,10 +79,10 @@ app.post('/api/putImageToFtp', function( request, response){
     console.log( request.files );
     var ftp = new Ftp();
 
-    var file = request.files.image.data;
+    var image = request.files.image;
 
     ftp.on('ready', function() {
-      ftp.put( file , '/public_html/pictures/line/' + file.name, function( err ) {
+      ftp.put( image.data , '/public_html/pictures/line/' + image.name, function( err ) {
         if ( err ) throw err;
         ftp.end();
       });
