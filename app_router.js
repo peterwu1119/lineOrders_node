@@ -95,6 +95,9 @@ app.post('/api/putImageToFtp', function( request, response){
     }
 
     ftp.connect( ftpConfig );
+    
+    var image_url = 'https://gam.jzm.mybluehost.me/pictures/line/' + image.name;
+    response.send( image_url );
 })
 
 
