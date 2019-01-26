@@ -7,6 +7,7 @@ const fetch = require('node-fetch');
 const FormData = require('form-data');
 const fs = require('fs');
 const imgur = require('imgur');
+const Ftp = require('ftp');
 var app = module.exports = express();
 
 
@@ -70,6 +71,26 @@ app.post('/api/pushMessage', function(request, response){
 
 app.get('/api/getImgurClientId', function(request, response){
     response.send( process.env.IMGUR_CLIENT_ID );
+})
+
+app.get('/api/putImageToFtp', function( request, response){
+    var ftp = new Ftp();
+
+    ftp.on('ready', function() {
+      ftp.list(function(err , list) {
+        if ( err ) throw err;
+        console.dir( list );
+        ftp.end();
+      });
+    });
+
+    var ftpConfig = {
+        'host' : process.env.FTP_HOST,
+        'user' : process.env.FTP_USER,
+        'password' : process.env.FTP_PASSWORD,
+    }
+
+    ftp.connect( ftpConfig );
 })
 
 
