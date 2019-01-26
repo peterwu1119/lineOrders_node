@@ -73,13 +73,15 @@ app.get('/api/getImgurClientId', function(request, response){
     response.send( process.env.IMGUR_CLIENT_ID );
 })
 
-app.get('/api/putImageToFtp', function( request, response){
+app.post('/api/putImageToFtp', function( request, response){
+    console.log( request.files );
     var ftp = new Ftp();
 
+    var file = null;
+
     ftp.on('ready', function() {
-      ftp.list(function(err , list) {
+      ftp.put( file , '/public_html/pictures/line/', function( err ) {
         if ( err ) throw err;
-        console.dir( list );
         ftp.end();
       });
     });
