@@ -37,20 +37,28 @@ class CreateGroupBuy extends React.Component {
       var client_id = response.data;
       return _this.saveImage( client_id );
     })
-    .then(function(img_url ){
-      _this.pushMessage( img_url );
+    .then(function(response ){
+      console.log( response);
+      var img_url = response.data;
+      _this.pushMessage( img_url  );
     })
     .then(function(){
-      _this.liff.closeWindow(); 
+      //_this.liff.closeWindow(); 
     })
   }
 
   saveImage( client_id ){
     //post local choosen image to imgur api
-    return new Promise( function( resolve , reject ){
       var form = new FormData();
       form.append('image', document.getElementById('groupBuyImage').files[0] );
 
+      return axios.post('/api/putImageToFtp', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+
+      /*
       var request = new XMLHttpRequest();
       request.open("POST",'https://api.imgur.com/3/image');
       request.setRequestHeader('Authorization', 'Client-ID ' + client_id );
@@ -64,7 +72,7 @@ class CreateGroupBuy extends React.Component {
         }
       };
       request.send( form );
-    })
+      */
   }
 
   pushMessage( img_url ){
