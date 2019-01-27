@@ -12,19 +12,9 @@ class CreateGroupBuy extends React.Component {
     this.pushMessage = this.pushMessage.bind( this );
 
     var vconsole = new vConsole();
-    console.log('abc')
   }
 
-  componentWillMount () {
-    const _this = this;
-
-    //add liff sdk
-    var script = document.createElement("script");
-
-    script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
-    script.async = true;
-
-    document.body.appendChild(script);
+  componentDidMount () {
 
   }
 
@@ -41,7 +31,8 @@ class CreateGroupBuy extends React.Component {
       _this.pushMessage( img_url  );
     })
     .then(function(){
-      //_this.liff.closeWindow(); 
+      console.log( window.liff );
+      window.liff.closeWindow() ;
     })
   }
 
