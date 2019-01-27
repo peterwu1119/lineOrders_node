@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import request from 'request'
+import request from 'request';
+import vConsole from 'vconsole';
 
 class CreateGroupBuy extends React.Component {
 
@@ -9,21 +10,17 @@ class CreateGroupBuy extends React.Component {
     this.createMenu = this.createMenu.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
+
+    var vconsole = new vConsole();
   }
 
   componentWillMount () {
+    const _this = this;
+
     //add liff sdk
     var script = document.createElement("script");
 
     script.src = "https://d.line-scdn.net/liff/1.0/sdk.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-    
-    //add tencent vconsole for debugging liff app
-    var script = document.createElement("script");
-
-    script.src = "https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js";
     script.async = true;
 
     document.body.appendChild(script);
