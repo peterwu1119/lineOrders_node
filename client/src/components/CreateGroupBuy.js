@@ -12,6 +12,7 @@ class CreateGroupBuy extends React.Component {
     this.pushMessage = this.pushMessage.bind( this );
 
     var vconsole = new vConsole();
+    console.log('abc')
   }
 
   componentWillMount () {
