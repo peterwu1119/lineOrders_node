@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import request from 'request';
-import vConsole from 'vconsole';
 
 class CreateGroupBuy extends React.Component {
 
@@ -10,8 +9,6 @@ class CreateGroupBuy extends React.Component {
     this.createMenu = this.createMenu.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
-
-    var vconsole = new vConsole();
   }
 
   componentDidMount () {
