@@ -18,48 +18,27 @@ class CreateGroupBuy extends React.Component {
 
   createMenu(){
     const _this = this;
-    axios.get('/api/getImgurClientId')
-    .then(function( response ) {
-      var client_id = response.data;
-      return _this.saveImage( client_id );
-    })
+
+    _this.saveImage()
     .then(function(response ){
-      console.log( response);
       var img_url = response.data;
-      _this.pushMessage( img_url  );
+      return _this.pushMessage( img_url  );
     })
     .then(function(){
-      console.log( window.liff );
       window.liff.closeWindow() ;
     })
   }
 
-  saveImage( client_id ){
+  saveImage(){
     //post local choosen image to imgur api
-      var form = new FormData();
-      form.append('image', document.getElementById('groupBuyImage').files[0] );
+    var form = new FormData();
+    form.append('image', document.getElementById('groupBuyImage').files[0] );
 
-      return axios.post('/api/putImageToFtp', form, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-
-      /*
-      var request = new XMLHttpRequest();
-      request.open("POST",'https://api.imgur.com/3/image');
-      request.setRequestHeader('Authorization', 'Client-ID ' + client_id );
-      request.onload = function() {
-        if( request.status == 200){
-          var imgur_obj =  JSON.parse( request.responseText );
-          resolve( imgur_obj.data.link );
-        }
-        else{
-          reject( 'Error :' + request.responseText);
-        }
-      };
-      request.send( form );
-      */
+    return axios.post('/api/putImageToFtp', form, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   }
 
   pushMessage( img_url ){
