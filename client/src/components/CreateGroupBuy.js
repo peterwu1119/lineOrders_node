@@ -9,7 +9,7 @@ class CreateGroupBuy extends React.Component {
     this.createMenu = this.createMenu.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
-    this.getUserId = this.pushMessage.bind( this );
+    this.getUserId = this.getUserId.bind( this );
     var vConsole = new window.VConsole();
   }
 
