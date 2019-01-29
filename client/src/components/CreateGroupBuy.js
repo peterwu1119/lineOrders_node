@@ -16,13 +16,33 @@ class CreateGroupBuy extends React.Component {
 
   }
 
+  getUserId(){
+    return new Promise( function(resolve , reject ){
+      window.liff.init(
+        data => {
+          var user_id = data.context.userId;
+          resolve( user_id );
+        },
+        err => {
+          reject('error occur');
+        }
+      );
+    })
+  }
+
   createMenu(){
     const _this = this;
 
-    _this.saveImage()
+    var user_id = '';
+
+    _this.getUserId()
+    .then(function( userId ){
+      user_id =  userId;
+      return _this.saveImage();
+    })
     .then(function(response ){
       var img_url = response.data;
-      return _this.pushMessage( img_url  );
+      return _this.pushMessage( img_url , user_id );
     })
     .then(function(){
       window.liff.closeWindow() ;
@@ -41,8 +61,7 @@ class CreateGroupBuy extends React.Component {
     })
   }
 
-  pushMessage( img_url ){
-    var user_id = this.props.match.params.user_id;
+  pushMessage( img_url , user_id ){
 
     return axios.post('/api/pushMessage', {
       user_id : user_id,
