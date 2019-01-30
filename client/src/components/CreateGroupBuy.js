@@ -7,6 +7,7 @@ class CreateGroupBuy extends React.Component {
   constructor(props, context){
     super(props, context);
     this.createMenu = this.createMenu.bind( this );
+    this.setFileName = this.setFileName.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessage = this.pushMessage.bind( this );
     this.getUserId = this.getUserId.bind( this );
@@ -15,6 +16,11 @@ class CreateGroupBuy extends React.Component {
 
   componentDidMount () {
 
+  }
+
+  setFileName(){
+    var file_name = document.getElementById('groupBuyImage').files[0].name;
+    document.getElementsByClassName('custom-file-label')[0].innerHTML = file_name;
   }
 
   getUserId(){
@@ -129,7 +135,7 @@ class CreateGroupBuy extends React.Component {
         <p></p>
         <form action="javascript:void(0);">
           <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="groupBuyImage" name="image" />
+            <input type="file" class="custom-file-input" id="groupBuyImage" onChange={ this.setFileName }  />
             <label class="custom-file-label" for="customFile">請上傳圖片</label>
           </div>
           <div class="mt-3">
