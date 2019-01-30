@@ -32,6 +32,7 @@ class CreateGroupBuy extends React.Component {
   }
 
   createMenu(){
+    console.log('in create menu')
     const _this = this;
 
     var user_id = '';
@@ -124,13 +125,13 @@ class CreateGroupBuy extends React.Component {
       <div class="container mt-3">
         <h2>建立團購</h2>
         <p></p>
-        <form>
+        <form action="javascript:void(0);">
           <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename" />
+            <input type="file" class="custom-file-input" id="customFile" name="image" />
             <label class="custom-file-label" for="customFile">請上傳圖片</label>
           </div>
           <div class="mt-3">
-            <button type="submit" class="btn btn-primary" onClick={ this.createMenu }>建立團購</button>
+            <button class="btn btn-primary" onClick={ this.createMenu }>建立團購</button>
           </div>
         </form>
       </div>
