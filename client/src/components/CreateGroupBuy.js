@@ -22,6 +22,7 @@ class CreateGroupBuy extends React.Component {
       window.liff.init(
         data => {
           var user_id = data.context.userId;
+          console.log( user_id );
           resolve( user_id );
         },
         err => {
@@ -44,6 +45,7 @@ class CreateGroupBuy extends React.Component {
     })
     .then(function(response ){
       var img_url = response.data;
+      console.log( img_url );
       return _this.pushMessage( img_url , user_id );
     })
     .then(function(){
