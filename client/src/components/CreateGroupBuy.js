@@ -129,7 +129,7 @@ class CreateGroupBuy extends React.Component {
         <p></p>
         <form action="javascript:void(0);">
           <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="image" />
+            <input type="file" class="custom-file-input" id="groupBuyImage" name="image" />
             <label class="custom-file-label" for="customFile">請上傳圖片</label>
           </div>
           <div class="mt-3">
