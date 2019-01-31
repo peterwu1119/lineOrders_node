@@ -68,6 +68,7 @@ app.post('/ajax', function (request, response) {
 app.post('/api/pushMessage', function(request, response){
     console.log( request.body );
     bot.push( request.body.user_id , request.body.message );
+    response.send('');
 })
 
 app.get('/api/getImgurClientId', function(request, response){
