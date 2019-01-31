@@ -1,4 +1,7 @@
+import 'jquery/src/jquery';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'jasny-bootstrap/dist/css/jasny-bootstrap.css';
+import 'jasny-bootstrap/dist/js/jasny-bootstrap.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { hashHistory } from 'react-router'

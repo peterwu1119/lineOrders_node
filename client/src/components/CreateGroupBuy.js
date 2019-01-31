@@ -130,18 +130,18 @@ class CreateGroupBuy extends React.Component {
 
   render () {
     return (
-      <div class="container mt-3">
-        <h2>建立團購</h2>
-        <p></p>
-        <form action="javascript:void(0);">
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="groupBuyImage" onChange={ this.setFileName }  />
-            <label class="custom-file-label" for="customFile">請上傳圖片</label>
+      <div className="container mt-3">
+        <div className="fileinput fileinput-new" data-provides="fileinput">
+          <div className="fileinput-preview thumbnail" data-trigger="fileinput" style={{ width: '200px' , height: '150px' }}></div>
+          <div>
+            <span className="btn btn-default btn-file">
+              <span className="fileinput-new">Select image</span>
+              <span className="fileinput-exists">Change</span>
+              <input type="file" name="..." />
+            </span>
+            <a href="#" className="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
           </div>
-          <div class="mt-3">
-            <button class="btn btn-primary" onClick={ this.createMenu }>建立團購</button>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }
