@@ -12,19 +12,6 @@ const fileUpload = require('express-fileupload');
 const mongodb = require('mongodb');
 var app = module.exports = express();
 
-var mongoClient = mongodb.MongoClient;
-var url = process.env.MONGODB_URL;
-
-mongoClient.connect(url, function(err, db) {
-    if ( err ) throw err;
-    var dbo = db.db('line_orders');
-    dbo.createCollection('customers', function(err, res) {
-      if ( err ) throw err;
-      console.log("Customers Collection created!");
-      db.close();
-    });
-});
-
 
 const bot = linebot({
     channelId: process.env.CHANNEL_ID,
@@ -80,8 +67,9 @@ app.post('/ajax', function (request, response) {
 });
 
 app.post('/api/pushMessage', function(request, response){
-    console.log( request.body );
+    console.log( requseruest.body );
     bot.push( request.body.user_id , request.body.message );
+    save_to_mongodb( 'users' , { name : '123' , id : 'abc' } )
     response.send('');
 })
 
@@ -171,4 +159,19 @@ function create_flex_group_buy_message( user_id ){
     console.log( host_url );
 
     bot.push( user_id , message );
+}
+
+function save_to_mongodb( collection_name , document ){
+    var mongoClient = mongodb.MongoClient;
+    var url = process.env.MONGODB_URL;
+
+    mongoClient.connect(url, function(err, db) {
+        if ( err ) throw err;
+        var dbo = db.db( 'line_orders' );
+        dbo.collection( collection_name ).insertOne(document , function(err, res) {
+          if (err) throw err;
+          console.log("1 document inserted");
+          db.close();
+        });
+    });
 }
