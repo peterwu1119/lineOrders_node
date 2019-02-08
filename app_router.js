@@ -48,6 +48,7 @@ bot.on('join' , function(event){
 // use push message
 
 bot.on('message', function (event) {
+    save_to_mongodb( 'users' , { name : '123' , id : 'abc' } )
     if( event.message.text === "我要團購" ){
         create_flex_group_buy_message( event.source.userId );
     }
@@ -69,7 +70,6 @@ app.post('/ajax', function (request, response) {
 app.post('/api/pushMessage', function(request, response){
     console.log( requseruest.body );
     bot.push( request.body.user_id , request.body.message );
-    save_to_mongodb( 'users' , { name : '123' , id : 'abc' } )
     response.send('');
 })
 
