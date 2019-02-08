@@ -9,7 +9,21 @@ const fs = require('fs');
 const imgur = require('imgur');
 const Ftp = require('ftp');
 const fileUpload = require('express-fileupload');
+const mongodb = require('mongodb');
 var app = module.exports = express();
+
+var mongoClient = mongodb.MongoClient;
+var url = process.env.MONGODB_URL;
+
+mongoClient.connect(url, function(err, db) {
+    if ( err ) throw err;
+    var dbo = db.db('line_orders');
+    dbo.createCollection('customers', function(err, res) {
+      if ( err ) throw err;
+      console.log("Customers Collection created!");
+      db.close();
+    });
+});
 
 
 const bot = linebot({
