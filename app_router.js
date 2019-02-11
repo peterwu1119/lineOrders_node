@@ -56,7 +56,7 @@ bot.on('message', function (event) {
             group_id : event.source.groupId 
         });
 
-        if( results.length == 0 ){
+        if ( ! results ){
             save_to_mongodb( 'user_groups' , { 
                 user_id : event.source.userId, 
                 user_name : '',
