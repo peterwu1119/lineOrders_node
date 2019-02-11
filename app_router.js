@@ -49,7 +49,13 @@ bot.on('join' , function(event){
 
 bot.on('message', function (event) {
     console.log( event );
-    save_to_mongodb( 'users' , { name : '123' , id : 'abc' } )
+    save_to_mongodb( 'messages' , { 
+        user_id : event.source.userId, 
+        group_id : event.source.groupId, 
+        source_type : event.source.type, 
+        message_text : event.message.text, 
+        message_type : event.message.type, 
+    })
     if( event.message.text === "我要團購" ){
         create_flex_group_buy_message( event.source.userId );
     }
