@@ -112,7 +112,7 @@ app.get('/api/getUserGroups', function(request, response){
     console.log( request.query );
     
     find_in_mongodb( 'user_groups' , {
-        user_id : event.source.userId  
+        user_id : request.query.user_id
     })
     .then(function( results ){
         return results; 
