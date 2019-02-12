@@ -51,7 +51,6 @@ bot.on('message', function (event) {
     console.log( event );
     if( event.message.text === '/save' && event.source.type == 'group'){
 
-        var results = null;
         find_in_mongodb( 'user_groups' , {
             user_id : event.source.userId , 
             group_id : event.source.groupId 
