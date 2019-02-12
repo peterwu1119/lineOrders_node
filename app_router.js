@@ -108,6 +108,17 @@ app.get('/api/getImgurClientId', function(request, response){
     response.send( process.env.IMGUR_CLIENT_ID );
 })
 
+app.get('/api/getUserGrouops', function(request, response){
+    console.log( request.query );
+    
+    find_in_mongodb( 'user_groups' , {
+        user_id : event.source.userId  
+    })
+    .then(function( results ){
+        return results; 
+    })
+})
+
 app.use( fileUpload());
 app.post('/api/putImageToFtp', function( request, response){
     console.log( request.files );
