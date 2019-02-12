@@ -11,6 +11,7 @@ import './css/index.css';
 import App from './components/App';
 import CreateGroupBuy from './components/CreateGroupBuy';
 import JoinGroupBuy from './components/JoinGroupBuy';
+import SendGroupMessages from './components/SendGroupMessages';
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
@@ -22,6 +23,7 @@ ReactDOM.render(
           {/* <Route path="/" component={App}/> */}
           <Route path="/createGroupBuy/" component={CreateGroupBuy}/>
           <Route path="/joinGroupBuy" component={JoinGroupBuy} />
+          <Route path="/sendGroupMessages" component={SendGroupMessages} />
         </div>
     </Router>
   ),
