@@ -23,21 +23,36 @@ class SendGroupMessages extends React.Component {
   }
 
   findUserGroups(){
-    this.getUserId()
+    var _this = this;
+    _this.getUserId()
     .then(function( userId ){
       var queryObj = { params : { user_id : userId } }
       axios.get('/api/getUserGroups', queryObj )
       .then(function( user_groups ){
         console.log( user_groups );
+        _this.createTable( user_groups );
       })
     })
   }
 
+  createTableHtml( user_groups ){
+    var table = [];
+
+    table.push( <tr><td>使用者名稱</td><td>群組名稱</td></tr> )
+    for( var i = 0 ; i < user_groups.length ; i++){
+      var children = []
+      children.push( <td>{ user_groups[i].user_id }</td> )
+      children.push( <td>{ user_groups[i].group_id }</td> )
+      table.push( <tr>{children}</tr> )
+    }
+    return table;
+  }
+
   render () {
     return (
-      <div>
-        <h1>傳送訊息123</h1>
-      </div>
+      <table>
+        { this.createTableHtml() }
+      </table>
     )
   }
 }
