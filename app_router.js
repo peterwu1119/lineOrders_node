@@ -59,18 +59,15 @@ bot.on('message', function (event) {
             console.log( 'results = ');
             console.log( results)
 
+            if ( ! results ){
+                save_to_mongodb( 'user_groups' , { 
+                    user_id : event.source.userId, 
+                    user_name : '',
+                    group_id : event.source.groupId, 
+                    group_name : '', 
+                })
+            }
         })
-
-        /*
-        if ( ! results ){
-            save_to_mongodb( 'user_groups' , { 
-                user_id : event.source.userId, 
-                user_name : '',
-                group_id : event.source.groupId, 
-                group_name : '', 
-            })
-        }
-        */
     }
 
     if( event.source.type == 'group'){
