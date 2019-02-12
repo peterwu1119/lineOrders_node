@@ -108,7 +108,7 @@ app.get('/api/getImgurClientId', function(request, response){
     response.send( process.env.IMGUR_CLIENT_ID );
 })
 
-app.get('/api/getUserGrouops', function(request, response){
+app.get('/api/getUserGroups', function(request, response){
     console.log( request.query );
     
     find_in_mongodb( 'user_groups' , {
