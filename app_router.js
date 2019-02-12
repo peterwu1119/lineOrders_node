@@ -59,7 +59,7 @@ bot.on('message', function (event) {
             console.log( 'results = ');
             console.log( results)
 
-            if ( ! results ){
+            if ( results.length > 0 ){
                 save_to_mongodb( 'user_groups' , { 
                     user_id : event.source.userId, 
                     user_name : '',
