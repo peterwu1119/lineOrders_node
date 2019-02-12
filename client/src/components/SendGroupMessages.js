@@ -8,13 +8,28 @@ class SendGroupMessages extends React.Component {
     this.findUserGroups();
   }
 
+  getUserId(){
+    return new Promise( function( resolve , reject ){
+      window.liff.init(
+        data => {
+          var user_id = data.context.userId;
+          resolve( user_id );
+        },
+        err => {
+          reject('error occur');
+        }
+      );
+    })
+  }
+
   findUserGroups(){
-    var queryObj = { params : { user_id : ''} }
-
-    axios.get('/api/getUserGroups', queryObj )
-    .then(function( user_groups ){
-      console.log( user_groups );
-
+    this.getUserId()
+    .then(function( userId ){
+      var queryObj = { params : { user_id : userId } }
+      axios.get('/api/getUserGroups', queryObj )
+      .then(function( user_groups ){
+        console.log( user_groups );
+      })
     })
   }
 
