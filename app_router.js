@@ -51,14 +51,18 @@ bot.on('message', function (event) {
     console.log( event );
     if( event.message.text === '/save' && event.source.type == 'group'){
 
-        var results =  find_in_mongodb( 'user_groups' , {
+        var results = null;
+        find_in_mongodb( 'user_groups' , {
             user_id : event.source.userId , 
             group_id : event.source.groupId 
-        });
+        })
+        .then(function( results ){
+            console.log( 'results = ');
+            console.log( results)
 
-        console.log( 'results = ');
-        console.log( results );
+        })
 
+        /*
         if ( ! results ){
             save_to_mongodb( 'user_groups' , { 
                 user_id : event.source.userId, 
@@ -67,6 +71,7 @@ bot.on('message', function (event) {
                 group_name : '', 
             })
         }
+        */
     }
 
     if( event.source.type == 'group'){
@@ -207,17 +212,22 @@ function save_to_mongodb( collection_name , document ){
 }
 
 function find_in_mongodb( collection_name , search_obj){
-    var mongoClient = mongodb.MongoClient;
-    var url = process.env.MONGODB_URL;
+    return new Promise( function(resolve , reject ){
+        var mongoClient = mongodb.MongoClient;
+        var url = process.env.MONGODB_URL;
 
-    mongoClient.connect( url, function( err, db ) {
-        if ( err ) throw err;
-        var dbo = db.db( 'line_orders' );
-        dbo.collection( collection_name ).find( search_obj ).toArray(function(err, result) {
-            if (err) throw err;
-            console.log( result );
-            return result;
-            db.close();
+        mongoClient.connect( url, function( err, db ) {
+            if ( err ) throw err;
+            var dbo = db.db( 'line_orders' );
+            dbo.collection( collection_name ).find( search_obj ).toArray(function(err, result) {
+                if ( err ){ 
+                    reject( err );
+                }
+                console.log( 'find result = ');
+                console.log( result );
+                db.close();
+                resolve( result );
+            });
         });
-    });
+    })
 }
