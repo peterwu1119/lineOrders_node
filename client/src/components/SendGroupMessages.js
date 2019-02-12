@@ -3,6 +3,11 @@ import axios from 'axios';
 
 class SendGroupMessages extends React.Component {
 
+  constructor(props, context){
+    super(props, context);
+    this.findUserGroups();
+  }
+
   findUserGroups(){
     var queryObj = { params : { user_id : ''} }
 
