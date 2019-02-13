@@ -64,7 +64,7 @@ bot.on('message', function (event) {
                     user_id : event.source.userId, 
                     user_name : '',
                     group_id : event.source.groupId, 
-                    group_name : event.message.text.replace('###'), 
+                    group_name : event.message.text.replace('###' , ''), 
                 })
             }
         })
