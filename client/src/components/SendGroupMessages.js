@@ -5,6 +5,7 @@ class SendGroupMessages extends React.Component {
 
   constructor(props, context){
     super(props, context);
+    var vConsole = new window.VConsole();
 
     this.state = {
       tableHtml : [] 
