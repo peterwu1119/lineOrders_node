@@ -67,7 +67,7 @@ class SendGroupMessages extends React.Component {
         <table>
           { this.state.tableHtml }
         </table>
-        <button onClick={ this.createGroupBuy }></button>
+        <button onClick={ this.createGroupBuy }>傳送</button>
       </div>
     )
   }
