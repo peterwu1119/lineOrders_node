@@ -5,6 +5,11 @@ class SendGroupMessages extends React.Component {
 
   constructor(props, context){
     super(props, context);
+
+    this.state = {
+      tableHtml : [] 
+    };
+
     this.findUserGroups();
   }
 
@@ -29,8 +34,8 @@ class SendGroupMessages extends React.Component {
       var queryObj = { params : { user_id : userId } }
       axios.get('/api/getUserGroups', queryObj )
       .then(function( user_groups ){
+        _this.createTableHtml( user_groups );
         console.log( user_groups );
-        _this.createTable( user_groups );
       })
     })
   }
@@ -45,13 +50,16 @@ class SendGroupMessages extends React.Component {
       children.push( <td>{ user_groups[i].group_id }</td> )
       table.push( <tr>{children}</tr> )
     }
-    return table;
+
+    this.setState({
+      tableHtml : table
+    });
   }
 
   render () {
     return (
       <table>
-        { this.createTableHtml() }
+        { this.state.tableHtml }
       </table>
     )
   }
