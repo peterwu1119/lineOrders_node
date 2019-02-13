@@ -115,6 +115,7 @@ app.get('/api/getUserGroups', function(request, response){
         user_id : request.query.user_id
     })
     .then(function( results ){
+        console.log( 'in find then');
         return results; 
     })
 })
