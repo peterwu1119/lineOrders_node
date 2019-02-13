@@ -49,7 +49,7 @@ bot.on('join' , function(event){
 
 bot.on('message', function (event) {
     console.log( event );
-    if( event.message.text === '/save' && event.source.type == 'group'){
+    if( event.message.text.startsWith('###') && event.source.type == 'group'){
 
         find_in_mongodb( 'user_groups' , {
             user_id : event.source.userId , 
@@ -64,7 +64,7 @@ bot.on('message', function (event) {
                     user_id : event.source.userId, 
                     user_name : '',
                     group_id : event.source.groupId, 
-                    group_name : '', 
+                    group_name : event.message.text.replace('###'), 
                 })
             }
         })
