@@ -48,7 +48,7 @@ class SendGroupMessages extends React.Component {
     for( var i = 0 ; i < user_groups.length ; i++){
       var children = []
       children.push( <td>{ user_groups[i].user_id }</td> )
-      children.push( <td>{ user_groups[i].group_id }</td> )
+      children.push( <td>{ user_groups[i].group_name }</td> )
       table.push( <tr>{children}</tr> )
     }
 
