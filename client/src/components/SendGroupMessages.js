@@ -57,11 +57,18 @@ class SendGroupMessages extends React.Component {
     });
   }
 
+  createGroupBuy(){
+    console.log('in create group buy');
+  }
+
   render () {
     return (
-      <table>
-        { this.state.tableHtml }
-      </table>
+      <div>
+        <table>
+          { this.state.tableHtml }
+        </table>
+        <button onClick={ this.createGroupBuy }></button>
+      </div>
     )
   }
 }
