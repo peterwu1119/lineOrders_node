@@ -78,15 +78,13 @@ class SendGroupMessages extends React.Component {
             </div>
           </div>
           <div class="mt-3">
-              <button class="btn btn-primary" onClick={ this.createMenu }>建立團購</button>
+              <table>
+                { this.state.tableHtml }
+              </table>
+              <button class='btn btn-primary' onClick={ this.createGroupBuy }>傳送</button>
           </div>
         </div>
-
-        <table>
-          { this.state.tableHtml }
-        </table>
-        <button onClick={ this.createGroupBuy }>傳送</button>
-      </div>
+    </div>
     )
   }
 }
