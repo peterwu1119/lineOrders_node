@@ -46,14 +46,15 @@ class SendGroupMessages extends React.Component {
 
     table.push( <thead><tr><th>使用者名稱</th><th>群組名稱</th></tr></thead> )
 
-    table.push('<tbody>')
+
+    var childrens = [];
     for( var i = 0 ; i < user_groups.length ; i++){
-      var children = []
+      var children = [];
       children.push( <td>{ user_groups[i].user_id }</td> )
       children.push( <td>{ user_groups[i].group_name }</td> )
-      table.push( <tr>{children}</tr> )
+      childrens.push( <tr>{ children }</tr> )
     }
-    table.push('</tbody>')
+    table.push(<tbody>{ childrens }</tbody>)
 
     this.setState({
       tableHtml : table
