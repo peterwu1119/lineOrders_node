@@ -232,8 +232,8 @@ function find_in_mongodb( collection_name , search_obj){
                 }
                 console.log( 'find result = ');
                 console.log( result );
-                db.close();
                 resolve( result );
+                db.close();
             });
         });
     })
