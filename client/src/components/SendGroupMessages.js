@@ -34,9 +34,9 @@ class SendGroupMessages extends React.Component {
     .then(function( userId ){
       var queryObj = { params : { user_id : userId } }
       axios.get('/api/getUserGroups', queryObj )
-      .then(function( user_groups ){
-        _this.createTableHtml( user_groups );
-        console.log( user_groups );
+      .then(function( results ){
+        _this.createTableHtml( results.data );
+        console.log( results.data );
       })
     })
   }
