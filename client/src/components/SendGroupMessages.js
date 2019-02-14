@@ -50,7 +50,7 @@ class SendGroupMessages extends React.Component {
     var childrens = [];
     for( var i = 0 ; i < user_groups.length ; i++){
       var children = [];
-      children.push( <td><input type='checkbox' onChange={ _this.updateGroupIds }></input></td> )
+      children.push( <td><input type='checkbox' value={ user_groups[i].group_id } onChange={ _this.updateGroupIds }></input></td> )
       children.push( <td>{ user_groups[i].group_name }</td> )
       childrens.push( <tr>{ children }</tr> )
     }
@@ -64,7 +64,7 @@ class SendGroupMessages extends React.Component {
   updateGroupIds( event ){
     console.log( 'event = ' );
     console.log( event );
-    console.log( event.target.checked );
+    console.log( event.target.value );
   }
 
   createGroupBuy(){
