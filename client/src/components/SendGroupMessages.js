@@ -64,10 +64,11 @@ class SendGroupMessages extends React.Component {
   }
 
   updateGroupIds( event ){
+    var _this = this;
     if( event.target.checked ){
-      this.sendGroupIds.push( event.target.value);
+      _this.sendGroupIds.push( event.target.value);
     }
-    console.log( this.sendGroupIds );
+    console.log( _this.sendGroupIds );
   }
 
   createGroupBuy(){
