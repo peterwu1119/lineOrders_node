@@ -5,6 +5,7 @@ class SendGroupMessages extends React.Component {
 
   constructor(props, context){
     super(props, context);
+    this.updateGroupIds = this.updateGroupIds.bind( this );
     var vConsole = new window.VConsole();
 
     this.state = {
