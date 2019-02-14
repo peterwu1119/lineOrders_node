@@ -3,6 +3,8 @@ import axios from 'axios';
 
 class SendGroupMessages extends React.Component {
 
+  sendGroupIds = [];
+
   constructor(props, context){
     super(props, context);
     var vConsole = new window.VConsole();
@@ -62,9 +64,10 @@ class SendGroupMessages extends React.Component {
   }
 
   updateGroupIds( event ){
-    console.log( 'event = ' );
-    console.log( event );
-    console.log( event.target.value );
+    if( event.target.checked ){
+      this.sendGroupIds.push( event.target.value);
+    }
+    console.log( event.sendGroupIds );
   }
 
   createGroupBuy(){
