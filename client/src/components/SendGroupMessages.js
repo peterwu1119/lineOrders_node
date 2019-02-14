@@ -42,6 +42,7 @@ class SendGroupMessages extends React.Component {
   }
 
   createTableHtml( user_groups ){
+    var _this = this;
     var table = [];
 
     table.push( <thead><tr><th></th><th>群組名稱</th></tr></thead> )
@@ -49,7 +50,7 @@ class SendGroupMessages extends React.Component {
     var childrens = [];
     for( var i = 0 ; i < user_groups.length ; i++){
       var children = [];
-      children.push( <td><input type='checkbox'></input></td> )
+      children.push( <td><input type='checkbox' onClick={ _this.updateGroupIds }></input></td> )
       children.push( <td>{ user_groups[i].group_name }</td> )
       childrens.push( <tr>{ children }</tr> )
     }
@@ -58,6 +59,11 @@ class SendGroupMessages extends React.Component {
     this.setState({
       tableHtml : table
     });
+  }
+
+  updateGroupIds( event ){
+    console.log( 'event = ' );
+    console.log( event );
   }
 
   createGroupBuy(){
