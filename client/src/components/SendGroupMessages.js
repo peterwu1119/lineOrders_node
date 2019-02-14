@@ -64,11 +64,20 @@ class SendGroupMessages extends React.Component {
   }
 
   updateGroupIds( event ){
-    var _this = this;
-    if( event.target.checked ){
-      _this.state.sendGroupIds.push( event.target.value);
+    var isChecked = event.target.checked;
+    var groupIds = this.state.sendGroupIds;
+    var checkboxValue = event.target.value; 
+
+    if( isChecked ){
+      if( groupIds.indexOf( checkboxValue  ) == -1 ){
+        groupIds.push( checkboxValue );
+      }
+    }else{
+      if( groupIds.indexOf( checkboxValue ) != -1 ){
+        groupIds.splice( groupIds.indexOf( checkboxValue ), 1);
+      }
     }
-    console.log( _this.state.sendGroupIds );
+    console.log( this.state.sendGroupIds );
   }
 
   createGroupBuy(){
