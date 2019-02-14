@@ -64,6 +64,7 @@ class SendGroupMessages extends React.Component {
   updateGroupIds( event ){
     console.log( 'event = ' );
     console.log( event );
+    console.log( event.target.checked );
   }
 
   createGroupBuy(){
