@@ -8,6 +8,7 @@ class SendGroupMessages extends React.Component {
     this.updateGroupIds = this.updateGroupIds.bind( this );
     this.saveImage = this.saveImage.bind( this );
     this.pushMessageToGroups = this.pushMessageToGroups.bind( this );
+    this.createGroupBuy = this.createGroupBuy.bind( this );
     var vConsole = new window.VConsole();
 
     this.state = {
