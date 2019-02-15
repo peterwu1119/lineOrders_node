@@ -99,7 +99,7 @@ app.post('/ajax', function (request, response) {
 });
 
 app.post('/api/pushMessage', function(request, response){
-    console.log( requseruest.body );
+    console.log( request.body );
 
     var ids = request.body.ids;
     for( var i = 0 ; i < ids.length ; i++){
