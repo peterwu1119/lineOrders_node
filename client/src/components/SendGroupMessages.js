@@ -81,7 +81,76 @@ class SendGroupMessages extends React.Component {
   }
 
   createGroupBuy(){
-    console.log('in create group buy');
+    console.log('in create group buy')
+    const _this = this;
+
+    _this.saveImage()
+    .then(function( response ){
+      var img_url = response.data;
+      return _this.pushMessageToGroups( img_url );
+    })
+    .then(function(){
+      window.liff.closeWindow() ;
+    })
+  }
+
+  saveImage(){
+    var form = new FormData();
+    form.append('image', document.getElementById('groupBuyImage').files[0] );
+
+    return axios.post('/api/putImageToFtp', form, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  }
+
+  pushMessageToGroups( img_url ){
+    var _this = this;
+
+    return axios.post('/api/pushMessage', {
+      ids : _this.state.sendGroupIds,
+      message : {
+        "type": "flex",
+        "altText": "團購功能",
+        "contents": {
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": img_url,
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                "type": "uri",
+                "uri": "http://linecorp.com/"
+                }
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                {
+                    "type": "button",
+                    "style": "link",
+                    "height": "sm",
+                    "action": {
+                    "type": "uri",
+                    "label": "參加團購",
+                    "uri": 'http://www.google.com' 
+                    }
+                },
+                {
+                    "type": "spacer",
+                    "size": "sm"
+                }
+                ],
+                "flex": 0
+            }
+        }
+      }
+    })
   }
 
   render () {

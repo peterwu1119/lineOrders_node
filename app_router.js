@@ -100,7 +100,11 @@ app.post('/ajax', function (request, response) {
 
 app.post('/api/pushMessage', function(request, response){
     console.log( requseruest.body );
-    bot.push( request.body.user_id , request.body.message );
+
+    var ids = request.body.ids;
+    for( var i = 0 ; i < ids.length ; i++){
+        bot.push( request.body.ids[i] , request.body.message );
+    }
     response.send('');
 })
 
