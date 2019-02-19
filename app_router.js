@@ -215,7 +215,7 @@ function create_image_map_message( user_id ){
     
     var message =  {
         "type": "imagemap",
-        "baseUrl": "https://gam.jzm.mybluehost.me/pictures/line/7C93D4F3-202F-4486-BF7D-F2000FAA701D#",
+        "baseUrl": "https://gam.jzm.mybluehost.me/pictures/line/7C93D4F3-202F-4486-BF7D-F2000FAA701D.jpeg#",
         "altText": "imagemap message",
         "baseSize": {
             "height": 1040,
