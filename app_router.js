@@ -83,6 +83,10 @@ bot.on('message', function (event) {
     if( event.message.text === "我要團購" ){
         create_flex_group_buy_message( event.source.userId );
     }
+
+    if( event.message.text === 'imagemap test'){
+        create_image_map_message( event.source.userId );
+    }
 });
 
 //Express API --------- App.get('path', callback function);
@@ -204,6 +208,43 @@ function create_flex_group_buy_message( user_id ){
     }
     console.log( host_url );
 
+    bot.push( user_id , message );
+}
+
+function create_image_map_message( user_id ){
+    
+    var message =  {
+        "type": "imagemap",
+        "baseUrl": "https://gam.jzm.mybluehost.me/pictures/line/7C93D4F3-202F-4486-BF7D-F2000FAA701D.jpeg",
+        "altText": "imagemap message",
+        "baseSize": {
+            "height": 1040,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "uri",
+                "linkUri": "https://www.google.com.tw/",
+                "label": "https://www.google.com.tw/",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
+            },
+            {
+                "type": "message",
+                "text": "aaa",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
+            }
+        ]
+    }
     bot.push( user_id , message );
 }
 
