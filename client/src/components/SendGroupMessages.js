@@ -183,7 +183,7 @@ class SendGroupMessages extends React.Component {
       <div>
         <div className="container mt-3">
           <h1>發起者：{ this.state.user.displayName }</h1>
-          <h1>{ this.state.user.pictureUrl }</h1>
+          <img src={ this.state.user.pictureUrl} />
           <p></p> <p></p>
           <div className="fileinput fileinput-new" data-provides="fileinput">
             <div className="fileinput-preview thumbnail" data-trigger="fileinput" style={{ width: '200px' , height: '150px' }}></div>
