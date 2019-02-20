@@ -23,6 +23,8 @@ class SendGroupMessages extends React.Component {
     return new Promise( function( resolve , reject ){
       window.liff.init(
         data => {
+          console.log( ' data.context = ' );
+          console.log( data.context );
           var user_id = data.context.userId;
           resolve( user_id );
         },
@@ -160,6 +162,7 @@ class SendGroupMessages extends React.Component {
     return (
       <div>
         <div className="container mt-3">
+          <h1>發起者：{ }</h1>
           <p></p> <p></p>
           <div className="fileinput fileinput-new" data-provides="fileinput">
             <div className="fileinput-preview thumbnail" data-trigger="fileinput" style={{ width: '200px' , height: '150px' }}></div>
