@@ -27,9 +27,14 @@ class SendGroupMessages extends React.Component {
           window.liff.getProfile().then(function( profile ){
             console.log( 'profile = ' );
             console.log( profile );
-            _this.state.user.id =  profile.userId;
-            _this.state.user.displayName =  profile.displayName;
-            _this.state.user.pictureUrl =  profile.pictureUrl;
+
+            _this.setState({
+              user : {
+                id : profile.userId,
+                displayName : profile.displayName,
+                pictureUrl : profile.pictureUrl,
+              }
+            });
           })
       }
     );
