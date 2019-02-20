@@ -11,16 +11,26 @@ class SendGroupMessages extends React.Component {
     this.createGroupBuy = this.createGroupBuy.bind( this );
     var vConsole = new window.VConsole();
 
-    var userProfile = window.liff.getProfile();
-
     this.state = {
       tableHtml : [],
       sendGroupIds : [],
       user : {
-        displayName : userProfile.displayName,
-        pictureUrl : userProfile.pictureUrl,
+        id : '',
+        displayName : '',
+        pictureUrl : '',
       }
     };
+
+    window.liff.init(
+      function( data ){
+          this.state.user.id =  data.context.userId;
+      }
+    );
+    var userProfile = window.liff.getProfile();
+    console.log( 'userProfile = ' );
+    console.log( userProfile );
+    this.state.user.displayName =  userProfile.displayName;
+    this.state.user.pictureUrl =  userProfile.pictureUrl;
 
     this.findUserGroups();
   }
@@ -43,14 +53,12 @@ class SendGroupMessages extends React.Component {
 
   findUserGroups(){
     var _this = this;
-    _this.getUserId()
-    .then(function( userId ){
-      var queryObj = { params : { user_id : userId } }
-      axios.get('/api/getUserGroups', queryObj )
-      .then(function( results ){
-        _this.createTableHtml( results.data );
-        console.log( results.data );
-      })
+    var queryObj = { params : { user_id : this.state.user.id } }
+
+    axios.get('/api/getUserGroups', queryObj )
+    .then(function( results ){
+      _this.createTableHtml( results.data );
+      console.log( results.data );
     })
   }
 
