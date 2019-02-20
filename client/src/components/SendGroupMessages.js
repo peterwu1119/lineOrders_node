@@ -11,9 +11,15 @@ class SendGroupMessages extends React.Component {
     this.createGroupBuy = this.createGroupBuy.bind( this );
     var vConsole = new window.VConsole();
 
+    var userProfile = window.liff.getProfile();
+
     this.state = {
       tableHtml : [],
-      sendGroupIds : []
+      sendGroupIds : [],
+      user : {
+        displayName : userProfile.displayName,
+        pictureUrl : userProfile.pictureUrl,
+      }
     };
 
     this.findUserGroups();
@@ -162,7 +168,8 @@ class SendGroupMessages extends React.Component {
     return (
       <div>
         <div className="container mt-3">
-          <h1>發起者：{ }</h1>
+          <h1>發起者：{ this.state.user.displayName }</h1>
+          <h1>{ this.state.user.pictureUrl }</h1>
           <p></p> <p></p>
           <div className="fileinput fileinput-new" data-provides="fileinput">
             <div className="fileinput-preview thumbnail" data-trigger="fileinput" style={{ width: '200px' , height: '150px' }}></div>
