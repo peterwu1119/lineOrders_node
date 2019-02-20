@@ -24,10 +24,8 @@ class SendGroupMessages extends React.Component {
     var _this = this;
     window.liff.init(
       function( data ){
-          window.liff.getProfile().then(function( profile ){
-            console.log( 'profile = ' );
-            console.log( profile );
-
+          window.liff.getProfile()
+          .then(function( profile ){
             _this.setState({
               user : {
                 id : profile.userId,
@@ -36,10 +34,11 @@ class SendGroupMessages extends React.Component {
               }
             });
           })
+          .then(function(){
+            _this.findUserGroups();
+          })
       }
     );
-    
-    this.findUserGroups();
   }
 
   getUserId(){
